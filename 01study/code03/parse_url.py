@@ -23,7 +23,6 @@ def parse_url(url, method="GET", data=None, proxies={}):
         html_str = _parse_url(url, method, data, proxies)
     except:
         html_str = None
-
     return html_str
 
 
