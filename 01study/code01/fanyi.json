@@ -1,0 +1,61 @@
+{
+  "errno": 0,
+  "phonetic": [
+    {
+      "src_str": "\u970d",
+      "trg_str": "hu\u00f2"
+    },
+    {
+      "src_str": "\u62c9",
+      "trg_str": "l\u0101"
+    }
+  ],
+  "from": "en",
+  "to": "zh",
+  "trans": [
+    {
+      "dst": "\u970d\u62c9",
+      "prefixWrap": 0,
+      "result": [
+        [
+          0,
+          "\u970d\u62c9",
+          [
+            "0|4"
+          ],
+          [],
+          [
+            "0|4"
+          ],
+          [
+            "0|6"
+          ]
+        ]
+      ],
+      "src": "hola"
+    }
+  ],
+  "dict": {
+    "symbols": [
+      {
+        "ph_en": "",
+        "ph_am": "",
+        "parts": [
+          {
+            "part_name": "\u7f51\u7edc",
+            "means": [
+              "\u8d6b\u62c9",
+              "\u7279\u529b\u5c4b",
+              "\u4f60\u597d",
+              "\u5965\u62c9",
+              "\u548c\u4e50"
+            ]
+          }
+        ]
+      }
+    ],
+    "word_name": "HOLA",
+    "from": "netdata"
+  },
+  "keywords": []
+}
