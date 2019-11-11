@@ -14,8 +14,7 @@ def get_Video_lists():
             "Referer": "http://stu.ityxb.com/index.html",
         }
         data = {'publicCourseId': '270', 'record': ''}
-        response = requests.post('http://stu.ityxb.com/bxg_anon/course/public/course/find', headers=headers, data=data,
-                                 timeout=30)
+        response = requests.post('http://stu.ityxb.com/bxg_anon/course/public/course/find', headers=headers, data=data, timeout=30)
         response.encoding = 'utf-8'
         Json_inf = response.json()
         videos_List = Json_inf['resultObject']['studentCourseGraduationVo']['videos']
@@ -35,7 +34,7 @@ def get_Video_lists():
 def getMP4(Videodict):
     videoPath = Videodict['videoPath']
     title = Videodict['title']
-    Savepath = f'/Users/jolin/Downloads/wzq123/{title}.mp4'
+    Savepath = f'G:\\wzq\\{title}.mp4'
     if os.path.isfile(Savepath):
         print('文件已存在，无需下载')
         return
