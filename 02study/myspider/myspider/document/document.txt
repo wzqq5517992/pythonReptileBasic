@@ -1,0 +1,4 @@
+
+
+#创建爬虫
+scrapy gensider demo01  itcast.cn
