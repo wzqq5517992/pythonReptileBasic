@@ -15,9 +15,10 @@ BOT_NAME = 'yangguang'
 SPIDER_MODULES = ['yangguang.spiders']
 NEWSPIDER_MODULE = 'yangguang.spiders'
 
-MONGO_HOST = "localhost"
+MONGO_HOST = "39.97.178.226"
 
 # LOG_LEVEL = "WARNING"
+LOG_FILE = "./log.log"
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
 
