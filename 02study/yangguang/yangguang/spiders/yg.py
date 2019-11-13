@@ -9,14 +9,11 @@ class YgSpider(scrapy.Spider):
     name = 'yg'
     allowed_domains = ['sun0769.com']
     start_urls = ['http://wz.sun0769.com/index.php/question/questionType?type=4&page=3']
-
     # start_urls = ['http://www.baidu.com']
-
     def parse(self, response):
-        # self.settings["MONGO_HOST"]
-        # self.settings.get("MONGO_HOST","")
-        # print(self.hello, "*" * 100)
+
         # 分组
+        global flag
         tr_list = response.xpath("//div[@class='greyframe']/table[2]/tr/td/table/tr")
         for tr in tr_list:
             item = YangguangItem()

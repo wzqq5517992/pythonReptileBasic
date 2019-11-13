@@ -5,26 +5,25 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 import re
-from yangguang.settings import MONGO_HOST
+from yangguang.settings import MONGO_HOST as ffff
 from pymongo import MongoClient
 import logging
+
 logger = logging.getLogger(__name__)
 
 
 class YangguangPipeline(object):
+    # 爬虫开始时执行一次
     def open_spider(self, spider):
-        # spider.hello = "world"
-        client = MongoClient()
+        MONGO_HOST = spider.settings.get("MONGO_HOST")
+        client = MongoClient(host=MONGO_HOST, port=27017)
         self.collection = client["test"]["test"]
 
     def process_item(self, item, spider):
-        logger.warning("=============")
-        logging.warning(item)
-        print("=======")
-        spider.settings.get("MONGO_HOST")
         item["content"] = self.process_content(item["content"])
         print(item)
 
+        # 插入一条数据
         self.collection.insert(dict(item))
         return item
 
