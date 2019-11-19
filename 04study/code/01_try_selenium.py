@@ -2,10 +2,13 @@
 from selenium import webdriver
 import time
 
-chrome_driver = r"/Users/jolin/Downloads/chromedriver"
+# chrome_driver = r"/Users/jolin/Downloads/chromedriver"
+chrome_driver = r"E:\chromedriver.exe"
+# phantomjs_driver = r"/Users/jolin/Downloads/phantomjs"
+phantomjs_driver = r"E:\phantomjs-2.1.1-windows\bin\phantomjs.exe"
 # 实例化一个浏览器
-driver = webdriver.Chrome(executable_path=chrome_driver)
-# driver = webdriver.PhantomJS(executable_path=chrome_driver)
+# driver = webdriver.Chrome(executable_path=chrome_driver)
+driver = webdriver.PhantomJS(executable_path=phantomjs_driver)
 
 # 设置窗口大小
 driver.set_window_size(1920, 1080)

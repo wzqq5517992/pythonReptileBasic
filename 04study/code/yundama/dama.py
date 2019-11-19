@@ -1,4 +1,4 @@
-#coding=utf-8
+# coding=utf-8
 import http.client, mimetypes, urllib, json, time, requests
 
 
@@ -88,22 +88,21 @@ class YDMHttp:
 ######################################################################
 
 # 用户名
-username = 'whoarewe'
-
+username = 'wzqq5517992'
 # 密码
-password = 'zhoudawei123'
-
-# appid
-appid = 4283
-
-# appkey
-appkey = '02074c64f0d0bb9efb2df455537b01c3'
-
-# 验证码类型
-codetype = 3007
-
-# 超时
+password = 'wzq5517992'
+# 软件ＩＤ，开发者分成必要参数。登录开发者后台【我的软件】获得！
+appid = 9474
+# 软件密钥，开发者分成必要参数。登录开发者后台【我的软件】获得！
+appkey = 'b52011394e2ec6e7631626ee3f622c2e'
+# 图片文件
+# filename = '../images/captcha.jpg'
+filename = "F:\\MyOwnCode\\pythonStudy\\pythonReptileBasic\\03study\\book\\book\\images\\captcha.jpg"
+# 验证码类型，# 例：1004表示4位字母数字，不同类型收费不同。请准确填写，否则影响识别率。在此查询所有类型 http://www.yundama.com/price.html
+codetype = 5000
+# 超时时间，秒
 timeout = 60
+
 
 def indetify(response_content):
     if (username == 'username'):
@@ -125,7 +124,8 @@ def indetify(response_content):
         print('cid: %s, result: %s' % (cid, result))
         return result
 
-def indetify_by_filepath(file_path): #打开注释
+
+def indetify_by_filepath(file_path):  # 打开注释
     if (username == 'username'):
         print('请设置好相关参数再测试')
     else:
@@ -144,10 +144,12 @@ def indetify_by_filepath(file_path): #打开注释
         cid, result = yundama.decode(file_path, codetype, timeout)
         print('cid: %s, result: %s' % (cid, result))
         return result
+
+
 ######################################################################
 if __name__ == '__main__':
     url = "http://qian.sicent.com/Login/code.do"
     content = requests.get(url).content
-    with open("test.png","wb") as f:
+    with open("test.png", "wb") as f:
         f.write(content)
     indetify(content)
