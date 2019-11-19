@@ -12,3 +12,10 @@ class BookItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     pass
+
+
+class MoonLightItem(scrapy.Item):
+    title = scrapy.Field()
+    video_href = scrapy.Field()
+    video_url = scrapy.Field()
+    img_href = scrapy.Field()
