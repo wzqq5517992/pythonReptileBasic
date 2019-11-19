@@ -2,6 +2,7 @@
 import scrapy
 from tencent.items import TencentItem
 
+
 class HrSpider(scrapy.Spider):
     name = 'hr'
     allowed_domains = ['tencent.com']
@@ -14,11 +15,12 @@ class HrSpider(scrapy.Spider):
             item["title"] = tr.xpath("./td[1]/a/text()").extract_first()
             item["position"] = tr.xpath("./td[2]/text()").extract_first()
             item["publish_date"] = tr.xpath("./td[5]/text()").extract_first()
+            print(item)
             yield item
-        #找到下一页的url地址
+        # 找到下一页的url地址
         next_url = response.xpath("//a[@id='next']/@href").extract_first()
         if next_url != "javascript:;":
-            next_url = "http://hr.tencent.com/" +next_url
+            next_url = "http://hr.tencent.com/" + next_url
             yield scrapy.Request(
                 next_url,
                 callback=self.parse,
@@ -27,5 +29,3 @@ class HrSpider(scrapy.Spider):
 
     # def parse1(self,response):
     #     response.meta["item"]
-
-

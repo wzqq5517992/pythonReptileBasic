@@ -11,9 +11,10 @@ from tencent.items import TencentItem
 client = MongoClient()
 collection = client["tencent"]["hr"]
 
+
 class TencentPipeline(object):
     def process_item(self, item, spider):
-        if isinstance(item,TencentItem):
+        if isinstance(item, TencentItem):
             print(item)
             collection.insert(dict(item))
         return item

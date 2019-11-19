@@ -14,8 +14,8 @@ class RandomUserAgentMiddleware:
 
 class CheckUserAgent:
     def process_response(self,request,response,spider):
-        # print(dir(response.request))
-        print(request.headers["User-Agent"])
+        print(dir(response.request))
+        # print(request.headers["User-Agent"])
         return response
 
 
