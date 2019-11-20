@@ -5,7 +5,7 @@ import requests
 class TiebaSpider:
     def __init__(self, tieba_name):
         self.tieba_name = tieba_name
-        self.url_temp = "https://tieba.baidu.com/f?kw=" + tieba_name + "&ie=utf-8&pn={}"
+        self.url_temp = "https://yuese62.com/categories/46d708646833c0a650378cf7a59fe149/f?kw=" + tieba_name + "&ie=utf-8&pn={}"
         self.headers = {
             "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36"}
 

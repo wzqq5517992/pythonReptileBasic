@@ -2,6 +2,7 @@
 import scrapy
 import re
 
+
 class GithubSpider(scrapy.Spider):
     name = 'github'
     allowed_domains = ['github.com']
@@ -12,8 +13,8 @@ class GithubSpider(scrapy.Spider):
         utf8 = response.xpath("//input[@name='utf8']/@value").extract_first()
         commit = response.xpath("//input[@name='commit']/@value").extract_first()
         post_data = dict(
-            login="noobpythoner",
-            password="zhoudawei123",
+            login="wzqq5517992",
+            password="wzq5517992",
             authenticity_token=authenticity_token,
             utf8=utf8,
             commit=commit
@@ -24,8 +25,7 @@ class GithubSpider(scrapy.Spider):
             callback=self.after_login
         )
 
-    def after_login(self,response):
-        # with open("a.html","w",encoding="utf-8") as f:
-        #     f.write(response.body.decode())
-        print(re.findall("noobpythoner|NoobPythoner",response.body.decode()))
-
+    def after_login(self, response):
+        with open("a.html", "w", encoding="utf-8") as f:
+            f.write(response.body.decode())
+        print(re.findall("wzqq5517992|Wzqq5517992", response.body.decode()))

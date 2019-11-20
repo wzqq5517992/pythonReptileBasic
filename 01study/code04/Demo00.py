@@ -6,8 +6,8 @@ import requests
 
 
 def getMP4():
-    videoPath = "https://yuese62.com/get_file/1/e9f900fd55fc721da9f389e7409e8a074a373789e0/23000/23674/23674.mp4/?br=710&rnd=1573266269852";
-    title = "wzqassd"
+    videoPath = "https://yuese64.com/get_file/1/468eb2b12442d283896be3564c09c0bcdcb1d7f3f4/15000/15704/15704.mp4/?br=501&rnd=1573986246586"
+    title = "测试视频"
     Savepath = f'G:\\wzq\\{title}.mp4'
     if os.path.isfile(Savepath):
         print('文件已存在，无需下载')
@@ -28,7 +28,7 @@ def getMP4():
         # ":authority": "yuese63.com"
     }
     response = requests.get(videoPath, headers=headers)
-    print(response.status_code);
+    print(response.status_code)
     if response.status_code == 403:
         print('403 服务器拒绝请求')
         return

@@ -1,35 +1,47 @@
-# coding=utf-8
 from selenium import webdriver
-import time
-from yundama.captcha_image import getImage
-from yundama.dama import indetify
+import sys
+import importlib
+import urllib.parse
 
-phantomjs_driver = r"E:\phantomjs-2.1.1-windows\bin\phantomjs.exe"
-browser = webdriver.PhantomJS(executable_path=phantomjs_driver)
-res = getImage
-browser.get("https://yuese64.com/login/")
-browser.find_element_by_id("login_username").send_keys("wzq5517992@166.com")
-browser.find_element_by_id("login_pass").send_keys("wzq5517992")
-code = indetify(res)
-browser.find_element_by_id("login_code").send_keys(code)
+importlib.reload(sys)
 
-# yanzhengma = input('请输入验证码')
 
-#
-# # 元素定位的方法
-# driver.find_element_by_id("su").click()
-# #
-# # # driver 获取html字符串
-# print(driver.page_source)  # 浏览器中elements的内容
-# print(driver.current_url)
-#
-# # driver获取cookie
-# cookies = driver.get_cookies()
-# print(cookies)
-# print("*" * 100)
-# cookies = {i["name"]: i["value"] for i in cookies}
-# print(cookies)
-#
-# # 退出浏览器
-time.sleep(3)
-driver.quit()
+# 1.用于将cookie字符串转换为对象，因为后面add_cookie需要传字典进去
+def ParseCookiestr(cookie_str):
+    cookielist = []
+    for item in cookie_str.split(';'):
+        cookie = {}
+        itemname = item.split('=')[0]
+        iremvalue = item.split('=')[1]
+        cookie['name'] = itemname
+        cookie['value'] = urllib.parse.unquote(iremvalue)
+        cookielist.append(cookie)
+    return cookielist
+
+
+if __name__ == '__main__':
+    url = 'http://www.wechall.net/challenge/training/programming1/index.php?action=request'
+    # 参数为文本形式的cookie,如：WC=yourwccookie
+    cookie_str = "WC=yourwccookie"
+    cookielist = ParseCookiestr(cookie_str)
+    chrome_driver = r"E:\chromedriver.exe"
+    driver = webdriver.Chrome(chrome_driver)
+    driver.set_page_load_timeout(5000)  # 防止页面加载个没完
+    # 2.需要先获取一下url，不然使用add_cookie会报错，这里有点奇怪
+    driver.get(url)
+
+    for i in cookielist:
+        cookie = {}
+        # 3.对于使用add_cookie来说，参考其函数源码注释，需要有name,value字段来表示一条cookie，有点生硬
+        cookie['name'] = i['name']
+        cookie['value'] = i['value']
+        # 4.这里需要先删掉之前那次访问时的同名cookie，不然自己设置的cookie会失效
+        driver.delete_cookie(i['name'])
+        # 添加自己的cookie
+        driver.add_cookie(cookie)
+
+    try:
+        driver.get(url)  # 再次打开爬取页面
+        print(driver.get_cookies())  # 打印设置成功的cookie
+    except:
+        print("ERROR")
